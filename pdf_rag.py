@@ -7,7 +7,8 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 
-LLM = "deepseek-r1:8b"
+LLM = "deepseek-r1"
+embeddings_model = 'nomic-embed-text'
 
 # Prompt template for answering questions
 template = """
@@ -24,7 +25,7 @@ pdfs_directory = "chat-with-pdf/pdfs/"
 os.makedirs(pdfs_directory, exist_ok=True)
 
 # Initialize embeddings and model
-embeddings = OllamaEmbeddings(model=LLM)
+embeddings = OllamaEmbeddings(model=embeddings_model)
 model = OllamaLLM(model=LLM)
 
 # Initialize vector store
@@ -105,13 +106,18 @@ if uploaded_file:
         # Chat input
         question = st.chat_input("Ask a question about the uploaded PDF:")
 
-        if question:
+        if question: 
             st.chat_message("user").write(question)
-
             with st.spinner("Retrieving relevant information..."):
                 related_documents = retrieve_docs(question)
                 if related_documents:
                     answer = answer_question(question, related_documents)
-                    st.chat_message("assistant").write(answer)
+                    html_answer = "<div style='display: inline-block; padding: 10px; border: 1px solid black;'>"
+                    for tag in answer.split("<"):
+                         if tag.startswith("</") or not tag.startswith("<"):
+                             continue
+                         html_answer += f"<span style='font-weight: bold'>{tag[1:-1]}</span>"
+                    html_answer += "</div>"
+                    st.chat_message("assistant").markdown(f"{html_answer}")
                 else:
                     st.chat_message("assistant").write("No relevant information found.")
