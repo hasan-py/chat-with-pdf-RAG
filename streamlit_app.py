@@ -75,7 +75,11 @@ if uploaded_file:
                     an_parts = re.split(r'</?think>', answer)
                     an = ''.join(part.strip() for part in an_parts if part.strip() and part.strip() not in ht)
 
-                    st.chat_message("assistant").caption(ht)
-                    st.chat_message("assistant").write(an)
+                    with st.chat_message('assistant'):
+                        if ht:
+                            with st.expander("thought"):
+                                st.caption(ht)
+                        
+                        st.write(an)
                 else:
                     st.chat_message("assistant").write("No relevant information found.")
