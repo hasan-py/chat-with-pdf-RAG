@@ -1,0 +1,28 @@
+.collapsible {
+    cursor: pointer;
+}
+.collapsible {
+    cursor: pointer;
+}
+
+.content {
+.collapsible {
+    cursor: pointer;
+}
+
+.collapsible {
+    cursor: pointer;
+}
+    cursor: pointer;
+}
+
+
+
+.content {
+    max-height: 0;
+    overflow-y: hidden;
+}
+
+.content.show {
+    max-height: 200px;
+}
