@@ -34,7 +34,7 @@ This project allows you to upload a PDF and ask questions about its content usin
    ```
 3. Run the Streamlit app:
    ```sh
-   streamlit run pdf_rag.py
+   streamlit run streamlit_app.py
    ```
 
 ## How It Works
