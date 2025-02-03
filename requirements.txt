@@ -3,3 +3,5 @@ langchain_core
 langchain_community
 langchain_ollama
 pdfplumber
+pytest
+langchain
