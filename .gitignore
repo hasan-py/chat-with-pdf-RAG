@@ -1,2 +1,4 @@
 /env
 /chat-with-pdf
+/.pytest_cache
+/__pycache__
