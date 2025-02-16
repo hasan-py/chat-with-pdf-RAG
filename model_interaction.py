@@ -65,24 +65,27 @@ def answer_question(question, related_documents):
 
 if __name__ == "__main__":
 
-    doc_path = "C:/Machine Learning/RAG/chat-with-pdf-RAG/chat-with-pdf/pdfs/transcripts_3.pdf"
+    # doc_path = "C:/Machine Learning/RAG/chat-with-pdf-RAG/chat-with-pdf/pdfs/transcripts_3.pdf"
 
-    documents = load_pdf(doc_path)
+    # documents = load_pdf(doc_path)
 
-    chunked_docs = split_text(documents)
-    index_docs(chunked_docs)
-    print('document embedded')
+    # chunked_docs = split_text(documents)
+    # for elem in chunked_docs:
+    #     print(type(elem))
 
-    question = "hi document"
-    answer = answer_question(question, retrieve_docs(question))
+    # index_docs(chunked_docs)
+    # print('document embedded')
 
-    ht_matches = re.findall(r'<think>(.*?)</think>', answer, re.DOTALL)
-    ht = ht_matches[0].strip() if ht_matches else ""
+    # question = "hi document"
+    # answer = answer_question(question, retrieve_docs(question))
 
-    an_parts = re.split(r'</?think>', answer)
-    an = ''.join(part.strip() for part in an_parts if part.strip() and part.strip() not in ht)
-    print(f"html: {ht}")
-    print(f"answer: {an}")
+    # ht_matches = re.findall(r'<think>(.*?)</think>', answer, re.DOTALL)
+    # ht = ht_matches[0].strip() if ht_matches else ""
+
+    # an_parts = re.split(r'</?think>', answer)
+    # an = ''.join(part.strip() for part in an_parts if part.strip() and part.strip() not in ht)
+    # print(f"html: {ht}")
+    # print(f"answer: {an}")
 
 
 

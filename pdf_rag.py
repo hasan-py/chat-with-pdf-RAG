@@ -56,6 +56,9 @@ if uploaded_file:
                 chunked_docs = model_interaction.split_text(documents)
                 model_interaction.index_docs(chunked_docs)
                 st.success("PDF indexed successfully! Ask your questions below.")
+            else:
+                print("No documents loaded. Exiting...")
+                exit()
 
         # Chat input
         question = st.chat_input("Ask a question about the uploaded PDF:")
@@ -69,7 +72,7 @@ if uploaded_file:
                     answer = model_interaction.answer_question(question, related_documents)
                     
                     #Format answer
-                    ht_matches = re.findall(r'<think>(.*?)</think>', answer, re.DOTALL)
+                    ht_matches = re.findall(r"<think>(.*?)</think>", answer, re.DOTALL)
                     ht = ht_matches[0].strip() if ht_matches else ""
 
                     an_parts = re.split(r'</?think>', answer)

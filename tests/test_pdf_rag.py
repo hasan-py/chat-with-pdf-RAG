@@ -2,8 +2,10 @@ import os
 import pytest
 import tempfile
 from unittest.mock import MagicMock, patch
-from pdf_rag import upload_pdf, load_pdf, split_text, index_docs, retrieve_docs, answer_question
+from pdf_rag import upload_pdf, load_pdf
+from model_interaction import split_text, index_docs, retrieve_docs, answer_question
 from langchain_core.documents import Document
+
 
 @pytest.fixture
 def sample_pdf():
@@ -43,7 +45,7 @@ def test_split_text():
     assert len(chunks) > 0
 
 
-@patch("pdf_rag.InMemoryVectorStore.add_documents")
+@patch("model_interaction.InMemoryVectorStore.add_documents")
 def test_index_docs(mock_add_docs):
     """Test document indexing."""
     documents = [Document(page_content="Indexed text")]
@@ -51,7 +53,7 @@ def test_index_docs(mock_add_docs):
     mock_add_docs.assert_called_once()
 
 
-@patch("pdf_rag.InMemoryVectorStore.similarity_search")
+@patch("model_interaction.InMemoryVectorStore.similarity_search")
 def test_retrieve_docs(mock_search):
     """Test document retrieval."""
     mock_search.return_value = [Document(page_content="Relevant text")]
@@ -60,7 +62,7 @@ def test_retrieve_docs(mock_search):
     assert len(result) > 0
 
 
-@patch("pdf_rag.OllamaLLM.invoke")
+@patch("model_interaction.OllamaLLM.invoke")
 def test_answer_question(mock_invoke):
     """Test question answering."""
     mock_invoke.return_value = "This is an answer."
