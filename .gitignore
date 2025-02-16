@@ -2,3 +2,7 @@
 /chat-with-pdf
 /.pytest_cache
 /__pycache__
+.aider*
+/__pychache__
+notes.txt
+tests/__pycache__
