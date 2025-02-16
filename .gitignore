@@ -1,4 +1,6 @@
-/env_rag
+/env
 /chat-with-pdf
+/.pytest_cache
+/__pycache__
 .aider*
 /__pychache__

@@ -53,9 +53,10 @@ To change the model used for inference, you can modify the `LLM` variable in the
 ```
 chat-with-pdf/
 │── pdfs/                   # Directory for uploaded PDFs
-│── app.py                  # Main Streamlit app
+│── pdf_rag.py              # Main Streamlit app
 │── requirements.txt        # Dependencies
 │── README.md               # Documentation
+│── test_pdf_rag.py         # Unit Test 
 ```
 
 ## Technologies Used
@@ -68,7 +69,11 @@ chat-with-pdf/
 
 ## Contributing
 
-Feel free to submit issues and PRs to improve the project!
+Feel free to submit issues and PRs to improve the project! And follow this steps:
+
+- Before submitting PRs, please update the corresponding test cases. 
+- Please attach a screen recording video to the PR description showing that all functionality is working properly.
+
 
 ## Acknowledgments
 
